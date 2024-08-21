@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
+const viewRouter = require("./routes/routes");
 
 module.exports = app;
 
-app.use("/", (req, res) => {
-	res.send("Hello world!");
-});
+app.set("view engine", "pug");
+app.use("/", viewRouter);
