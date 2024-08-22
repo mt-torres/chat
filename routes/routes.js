@@ -1,7 +1,11 @@
 const express = require("express");
-const { getTemplate } = require("../controller/viewController");
+const {
+	getJoinTemplate,
+	getChatTemplate,
+} = require("../controller/viewController");
 const router = express.Router();
 
-router.get("/", getTemplate);
+router.get("/", getJoinTemplate);
+router.get("/chat", getChatTemplate);
 
 module.exports = router;

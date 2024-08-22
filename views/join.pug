@@ -1,18 +1,15 @@
-doctype html 
-html
-    head
-        block head
-            meta(charset='UTF-8')
-            meta(name='viewport' content='width=device-width, initial-scale=1.0')
-            link(rel='stylesheet' href='/css/style.css')
-            link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
-            title Chat | #{title}
+extends base
 
-    body
-        // HEADER
-        
-        //CONTENT
-        block content
-            h1 This is a place holder heading
-        //FOOTER   
+block content 
+    div(class="container d-flex w-100 align-items-center" style="height: 100vh")
+            div(class="container d-flex justify-content-center h-50")
+                form(class="w-25 rounded-3 bg-primary-subtle p-3" id="join-form")
+                    p(class="lead") Entrar
+                    div(class="mb-3")
+                        label(for="inputName" class="form-label") Nome
+                        input(type="text" class="form-control" id="inputName")
+                    div(class="mb-3")
+                        label(for="inputRoom" class="form-label") Sala
+                        input(type="text" class="form-control" id="inputRoom")
+                    button(type="submit" class="btn btn-primary w-100") Entrar
 
