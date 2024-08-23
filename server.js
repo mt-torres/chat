@@ -3,7 +3,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
 io.on("connection", (socket) => {
-	socket.on("msg", (msg) => {
+	socket.on("joinRoom", (msg) => {
 		console.log("msg from server.js: ", msg);
 		const user = socket.handshake.headers.referer
 			.split("=")[1]
@@ -13,10 +13,17 @@ io.on("connection", (socket) => {
 		console.log("msg from server.js | user: ", user);
 
 		//
-		socket.emit("msg", `Olá ${user}, bem vindo a sala ${room}`);
+		socket.emit(
+			"joinRoom",
+			`Olá ${user}, bem vindo a sala ${room}`
+		);
 
 		//msg enviada a todos da sala, menos p user q entrou na sala
-		socket.broadcast.emit("msg", user + " entrou na sala!");
+		socket.broadcast.emit("joinRoom", user + " entrou na sala!");
+	});
+
+	socket.on("chatMessage", (msg) => {
+		io.emit("message", msg);
 	});
 });
 
