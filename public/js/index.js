@@ -8,7 +8,7 @@ if (joinForm) {
 
 		try {
 			const response = await fetch(
-				"http://localhost:8000/chat",
+				"http://localhost:3000/chat",
 				{
 					method: "POST",
 					headers: {
