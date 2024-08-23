@@ -4,12 +4,19 @@ const io = require("socket.io")(http);
 
 io.on("connection", (socket) => {
 	socket.on("msg", (msg) => {
-		console.log("msg from server.js//", msg);
-		const user =
-			socket.handshake.headers.referer.split("username=")[1];
+		console.log("msg from server.js: ", msg);
+		const user = socket.handshake.headers.referer
+			.split("=")[1]
+			.split("?")[0];
+		const room = socket.handshake.headers.referer.split("=")[2];
+		console.log("msg from server.js | room: ", room);
+		console.log("msg from server.js | user: ", user);
 
-		console.log(user);
-		socket.broadcast.emit("msg", user + " connected");
+		//
+		socket.emit("msg", `Olá ${user}, bem vindo a sala ${room}`);
+
+		//msg enviada a todos da sala, menos p user q entrou na sala
+		socket.broadcast.emit("msg", user + " entrou na sala!");
 	});
 });
 

@@ -7,12 +7,13 @@ const room = params.get("room");
 
 if (window.location.href.includes("chat")) {
 	socket.on("connect", function () {
-		console.log(socket.id);
-		const data = `<p>${username} Welcome to the room ${room}</p>`;
-		userList.insertAdjacentHTML("beforeend", data);
-		socket.emit("msg", "Im connected " + socket.id);
+		//Preciso do emit para que as mensagens sejam enviadas
+		socket.emit("msg");
+		//const data = `<p>${}</p>`;
+		//userList.insertAdjacentHTML("beforeend", data);
 	});
 
+	//mgs do arquivo server.js  socket.broadcast.emit("msg", user + " entrou na sala!");
 	socket.on("msg", function (msg) {
 		const data = `<p>${msg}</p>`;
 		userList.insertAdjacentHTML("beforeend", data);
