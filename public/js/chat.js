@@ -30,8 +30,19 @@ if (window.location.href.includes("chat")) {
 	});
 
 	//message é referente ao io.emit("message", msg) from server.js
-	socket.on("message", (msgToBeSend) => {
-		const data = `<p>${msgToBeSend}</p>`;
-		usersMsg.insertAdjacentHTML("beforeend", data);
+	socket.on("message", (data) => {
+		console.log(data);
+		const html = ` 
+			<div class="" role="alert" aria-live="assertive" aria-atomic="true" style="display=flex">
+				<div class="tr">
+					<small class="me-auto">${data.user} |</small>
+					<small>11 mins ago</small>
+				</div>
+				<div class="">
+					${data.msg}
+				</div>
+			</div>
+		`;
+		usersMsg.insertAdjacentHTML("beforeend", html);
 	});
 }
