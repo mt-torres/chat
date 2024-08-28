@@ -1,21 +1,9 @@
 extends base
 
 block content 
-    header(class="container")
-        div(class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom")
-            a(href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none")
-                svg(class="bi me-2" width="40" height="32")
-                    use(xlink:href="#bootstrap")
-                span(class="fs-4") BacoChat
-            ul(class="nav nav-pills")
-                li(class="nav-item")
-                    a(href="#" class="nav-link" aria-current="page") Home
-                li(class="nav-item")
-                    a(href="#" class="nav-link" aria-current="page") Sobre
-               
-    div(class="d-flex w-100 align-items-center")
-        div(class="container d-flex justify-content-center h-50")
-            form(class="rounded-3 bg-primary-subtle p-3" id="join-form")
+    main(class="d-flex w-100 align-items-center mt-5")
+        div(class="container d-flex justify-content-center")
+            form(class="rounded-3 bg-primary p-3" id="join-form")
                 p(class="lead") Entrar
                 div(class="mb-3")
                     label(for="inputName" class="form-label") Nome
@@ -23,5 +11,5 @@ block content
                 div(class="mb-3")
                     label(for="inputRoom" class="form-label") Sala
                     input(type="text" class="form-control" id="inputRoom")
-                button(type="submit" class="btn btn-primary w-100") Entrar
+                button(type="submit" class="btn btn-secondary w-100") Entrar
 

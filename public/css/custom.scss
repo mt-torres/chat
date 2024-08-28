@@ -1,0 +1,81 @@
+// custom.scss
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+// Sobrescreva as variáveis de cores padrão do Bootstrap
+$primary: #e0e1e2; // 
+$secondary: #AE6AFC; // 
+$success: #7E6AFC; // 
+
+$info: #17a2b8; // Azul claro
+$warning: #ffc107; // Amarelo
+$danger: #dc3545; // Vermelho
+$light: #f8f9fa; // Cinza claro
+$dark: #343a40; // Cinza escuro
+
+$font-family-base: 'Quicksand',
+sans-serif;
+// Qualquer outra variável que você queira sobrescrever
+// $body-bg: #ffffff;
+// $body-color: #212529;
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.img--teste {
+    width: 20%;
+    //background-color: white;
+}
+
+.container-message {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.message {
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #7E6AFC;
+    border-radius: 0px 52px 52px 52px;
+
+}
+
+.message__info {
+    font-size: smaller;
+}
+
+.message__data {
+    margin-bottom: .5rem;
+
+}
+
+.container-message--sender {
+    justify-content: end;
+}
+
+.message--sender {
+    border-radius: 52px 0px 52px 52px;
+}
+
+// Importe o Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap"

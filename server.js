@@ -6,7 +6,8 @@ io.on("connection", (socket) => {
 	socket.on("joinRoom", () => {
 		const user = socket.handshake.headers.referer
 			.split("=")[1]
-			.split("?")[0];
+			.split("?")[0]
+			.split("&")[0];
 		const room = socket.handshake.headers.referer.split("=")[2];
 		console.log("msg from server.js | room: ", room);
 		console.log("msg from server.js | user: ", user);
@@ -28,7 +29,8 @@ io.on("connection", (socket) => {
 	socket.on("chatMessage", (msg) => {
 		const user = socket.handshake.headers.referer
 			.split("=")[1]
-			.split("?")[0];
+			.split("?")[0]
+			.split("&")[0];
 		const room = socket.handshake.headers.referer.split("=")[2];
 
 		io.to(room).emit("message", { user, msg });

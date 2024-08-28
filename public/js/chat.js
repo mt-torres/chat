@@ -31,15 +31,20 @@ if (window.location.href.includes("chat")) {
 
 	//message é referente ao io.emit("message", msg) from server.js
 	socket.on("message", (data) => {
-		console.log(data);
 		const html = ` 
-			<div class="" role="alert" aria-live="assertive" aria-atomic="true" style="display=flex">
-				<div class="tr">
-					<small class="me-auto">${data.user} |</small>
-					<small>11 mins ago</small>
-				</div>
-				<div class="">
-					${data.msg}
+			<div class="container container-message  ${
+				data.user == username
+					? "container-message--sender"
+					: ""
+			}">
+				<div class="message ${data.user == username ? "message--sender" : ""}">
+					<div class="message__info>
+						<small class="message__user-name">${data.user} |</small>
+						<small class="message__user-date">11 mins ago</small>
+					</div>
+					<div class="message__data">
+						${data.msg}
+					</div>
 				</div>
 			</div>
 		`;
