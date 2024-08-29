@@ -9,10 +9,13 @@ block content
                     form(class="d-flex justify-content-center" role="search")
                         input(class="form-control border-0" type="search" placeholder="Buscar usuário" aria-label="Search")
             div(class="flex-grow-1 d-flex flex-column")
-                header(class="bg-danger")
-                    p Chat, sala #{data.room}
+                header(class="header-chat")
+                    img(class="header-chat__img" src="../img/logo.jpeg", alt="")
+                    div(class="header-chat__details")
+                        p(class="header-chat__text") #{data.username}, você está na sala #{data.room}
+                        span(class="header-chat__users") 210 usuários ativos
                 div(class="flex-grow-1 d-flex flex-column")
-                    div(class="bg-primary  flex-grow-1" id="users-msg")
+                    div(class="bg-warning  flex-grow-1" id="users-msg")
                     div(class="bg-info h-25")
                         form(class="d-flex h-100 align-items-end p-5" id="form-msg")
                             input(type="text" class="form-control" id="input-msg")

@@ -3,15 +3,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 // Sobrescreva as variáveis de cores padrão do Bootstrap
-$primary: #e0e1e2; // 
-$secondary: #AE6AFC; // 
+$primary: #c94bab; // 
+$secondary: #d9e757; // 
 $success: #7E6AFC; // 
 
-$info: #17a2b8; // Azul claro
+$info: #08bdf9; // Azul claro
 $warning: #ffc107; // Amarelo
 $danger: #dc3545; // Vermelho
 $light: #f8f9fa; // Cinza claro
 $dark: #343a40; // Cinza escuro
+
+$btn-border-radius: 20px;
+$border-radius: 20px;
+//$border-width:20px;
 
 $font-family-base: 'Quicksand',
 sans-serif;
@@ -39,11 +43,84 @@ footer {
 
 }
 
+
+
+
 .img--teste {
     width: 20%;
     //background-color: white;
 }
 
+
+
+//Tela login
+.container-login {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    //padding-top: 7rem;
+    align-items: center;
+}
+
+.login {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70%;
+    padding-right: 2.5rem;
+    justify-content: end;
+}
+
+.login__container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__logo-1 {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.container__logo-2 {
+    margin-top: 1rem;
+    width: 100%;
+    height: 50px;
+}
+
+.container__logo-text {
+    color: white;
+}
+
+.login__details {
+    height: 100%;
+    width: 48%;
+    z-index: 1;
+    left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.login__form {
+    width: 50%;
+    right: 0;
+    padding: 2rem 3rem 2rem 4rem
+}
+
+.form__btn {
+    border-radius: 20px;
+
+}
+
+.form__input {
+    border-radius: 20px;
+}
+
+
+//Div das mensagens
 .container-message {
     margin-bottom: 1rem;
     display: flex;
@@ -75,6 +152,33 @@ footer {
 
 .message--sender {
     border-radius: 52px 0px 52px 52px;
+}
+
+//header da div de mensagens
+.header-chat {
+    display: flex;
+    background-color: #AE6AFC;
+}
+
+.header-chat__img {
+    margin: .5rem .5rem .5rem 1.5rem;
+    border-radius: 50%;
+    width: 78px;
+}
+
+.header-chat__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-chat__text {
+    margin: 0;
+    padding: 0;
+}
+
+.header-chat__users {
+    font-size: small;
 }
 
 // Importe o Bootstrap

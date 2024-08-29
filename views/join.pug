@@ -1,15 +1,22 @@
 extends base
 
 block content 
-    main(class="d-flex w-100 align-items-center mt-5")
-        div(class="container d-flex justify-content-center")
-            form(class="rounded-3 bg-primary p-3" id="join-form")
-                p(class="lead") Entrar
+    div(class="container container-login")
+        main(class="d-flex position-relative login")
+            div(class="rounded-5 bg-dark position-absolute login__details")
+                div(class="login__container")
+                    img(class="container__logo-1" src="../img/logo.jpeg", alt="")
+                    //- img(class="container__img" src="../img/Logo-text.png", alt="")
+                    img(class="container__logo-2" src="../img/Logo-text2.png", alt="")
+                    span(class="container__logo-text") melhor chat do brasill
+            //- div(class="d-flex justify-content-center")
+            form(class="rounded-5 bg-info h-100 login__form" id="join-form")
+                h1(class="text-center") Entrar
                 div(class="mb-3")
-                    label(for="inputName" class="form-label") Nome
-                    input(type="text" class="form-control" id="inputName")
+                    label(for="inputName" class="form-label") Nome:
+                    input(type="text" class="form-control form__input" id="inputName")
                 div(class="mb-3")
-                    label(for="inputRoom" class="form-label") Sala
-                    input(type="text" class="form-control" id="inputRoom")
-                button(type="submit" class="btn btn-secondary w-100") Entrar
+                    label(for="inputRoom" class="form-label") Sala:
+                    input(type="text" class="form-control form__input" id="inputRoom")
+                button(type="submit" class="btn btn-dark w-100 mt-4 form__btn") Entrar
 
