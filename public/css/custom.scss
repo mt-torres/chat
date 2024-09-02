@@ -1,5 +1,4 @@
-// custom.scss
-
+//import da fonte
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 // Sobrescreva as variáveis de cores padrão do Bootstrap
@@ -119,45 +118,46 @@ footer {
     border-radius: 20px;
 }
 
+//chat
+.main-chat {
+    max-height: 100vh;
+    height: 100vh;
+    background-color: white;
+    padding: 2rem 5rem;
+}
 
-//Div das mensagens
-.container-message {
-    margin-bottom: 1rem;
+.main-chat__container {
     display: flex;
+    height: 100%;
+    //padding: 0 2rem;
 }
 
-.message {
-    padding: 0.5rem;
-    padding-left: 1.5rem;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    background-color: #7E6AFC;
-    border-radius: 0px 52px 52px 52px;
-
+//container users
+.container-users {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem;
+    width: 15.5rem;
+    margin-right: .5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
-.message__info {
-    font-size: smaller;
+//container das mensagens
+.message-user {
+    background: url(../img/fundo-chat.png);
+    background-size: contain;
+    overflow: auto;
 }
 
-.message__data {
-    margin-bottom: .5rem;
-
-}
-
-.container-message--sender {
-    justify-content: end;
-}
-
-.message--sender {
-    border-radius: 52px 0px 52px 52px;
-}
 
 //header da div de mensagens
-.header-chat {
+.header-chat__header {
+    height: 16%;
     display: flex;
-    background-color: #AE6AFC;
+    background-color: #343a40;
+    color: white;
+    border-top-right-radius: 20px;
 }
 
 .header-chat__img {
@@ -181,5 +181,81 @@ footer {
     font-size: small;
 }
 
+.container-chat {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //grid-template-rows: 1fr 5fr;
+
+}
+
+
+.container-chat__message {
+    height: 84%;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+
+}
+
+//Div das mensagens
+
+.container-message {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.message {
+    //padding: 0.5rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #7E6AFC;
+    border-radius: 0px 52px 52px 52px;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+
+.message:first-child {
+    margin-top: 1rem;
+}
+
+.message__info {
+    margin-top: 1.5px;
+    font-size: .7rem;
+}
+
+.message__user-name {
+    font-size: .8rem;
+
+}
+
+.message__data {
+    margin-bottom: .5rem;
+
+}
+
+.container-message--sender {
+    justify-content: end;
+}
+
+.message--sender {
+    border-radius: 52px 0px 52px 52px;
+}
+
+// container do form para enviar mensagens
+.form-container {
+    background-color: #343a40;
+    border-end-end-radius: 20px;
+}
+
+.form-container__form {
+    padding: 1rem 5rem;
+}
+
+.form-container__btn {
+    margin-left: 2rem;
+}
+
 // Importe o Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap"
+@import "../../node_modules/bootstrap/scss/bootstrap";

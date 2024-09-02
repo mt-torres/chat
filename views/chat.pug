@@ -1,24 +1,24 @@
 extends base
 
 block content
-    main(class="container-fluid bg-white py-3" style="height:100vh")
-        div(class="d-flex p-0 " style="height:100%")
-            div(class="bg-primary p-3 rounded-start-2" style="width: 15.5rem" id="user-list")
+    main(class="main-chat")
+        div(class="main-chat__container")
+            div(class="container-users" id="user-list")
                 header(class=" d-flex flex-column justify-content-center mb-2 pb-4 border-bottom border-1 border-white")
                     p(class="") Usuários
                     form(class="d-flex justify-content-center" role="search")
                         input(class="form-control border-0" type="search" placeholder="Buscar usuário" aria-label="Search")
-            div(class="flex-grow-1 d-flex flex-column")
-                header(class="header-chat")
+            div(class="container-chat")
+                header(class="header-chat__header")
                     img(class="header-chat__img" src="../img/logo.jpeg", alt="")
                     div(class="header-chat__details")
                         p(class="header-chat__text") #{data.username}, você está na sala #{data.room}
                         span(class="header-chat__users") 210 usuários ativos
-                div(class="flex-grow-1 d-flex flex-column")
-                    div(class="bg-warning  flex-grow-1" id="users-msg")
-                    div(class="bg-info h-25")
-                        form(class="d-flex h-100 align-items-end p-5" id="form-msg")
-                            input(type="text" class="form-control" id="input-msg")
-                            button(type="submit" class="btn btn-secondary bg-button ml-3") Enviar
+                div(class="container-chat__message")
+                    div(class="message-user" id="users-msg")
+                    div(class="form-container")
+                        form(class="d-flex form-container__form" id="form-msg")
+                            input(type="text" class="form-control form-container__input" id="input-msg")
+                            button(type="submit" class="btn btn-info form-container__btn") Enviar
 
 
