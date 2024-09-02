@@ -45,12 +45,6 @@ footer {
 
 
 
-.img--teste {
-    width: 20%;
-    //background-color: white;
-}
-
-
 
 //Tela login
 .container-login {
@@ -141,6 +135,34 @@ footer {
     margin-right: .5px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    height: 100%;
+}
+
+.container-user__header {
+    height: 20%;
+}
+
+.container-users__user-list {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.user-list__card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card__img {
+    width: 30px;
+    //background-color: white;
+}
+
+.card__user-name {
+    margin-left: .5rem;
+    font-size: 0.9rem;
 }
 
 //container das mensagens

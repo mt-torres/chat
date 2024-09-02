@@ -18,10 +18,6 @@ footer {
   right: 0;
 }
 
-.img--teste {
-  width: 20%;
-}
-
 .container-login {
   width: 100%;
   height: 85%;
@@ -105,6 +101,33 @@ footer {
   margin-right: 0.5px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  height: 100%;
+}
+
+.container-user__header {
+  height: 20%;
+}
+
+.container-users__user-list {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.user-list__card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card__img {
+  width: 30px;
+}
+
+.card__user-name {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .message-user {

@@ -3,11 +3,12 @@ extends base
 block content
     main(class="main-chat")
         div(class="main-chat__container")
-            div(class="container-users" id="user-list")
+            div(class="container-users")
                 header(class=" d-flex flex-column justify-content-center mb-2 pb-4 border-bottom border-1 border-white")
                     p(class="") Usuários
                     form(class="d-flex justify-content-center" role="search")
                         input(class="form-control border-0" type="search" placeholder="Buscar usuário" aria-label="Search")
+                div(class="container-users__user-list" id="user-list")
             div(class="container-chat")
                 header(class="header-chat__header")
                     img(class="header-chat__img" src="../img/logo.jpeg", alt="")
