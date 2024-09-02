@@ -1,6 +1,7 @@
 const socket = io();
 const usersMsg = document.querySelector("#users-msg");
 const formMsg = document.querySelector("#form-msg");
+const chatHeader = document.querySelector(".header-chat__details");
 
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
@@ -46,5 +47,16 @@ if (window.location.href.includes("chat")) {
 			</div>
 		`;
 		usersMsg.insertAdjacentHTML("beforeend", html);
+	});
+	//contabiliza a quantidade de usuarios na sala
+	socket.on("roomUsers", (users) => {
+		document.querySelectorAll(".header-chat__users").forEach((i) =>
+			i.remove()
+		);
+		const html = `
+			<span class="header-chat__users"> ${users.length} ${
+			users.length == 1 ? "usuário ativo" : "usuários ativos"
+		} </span>`;
+		chatHeader.insertAdjacentHTML("beforeend", html);
 	});
 }
