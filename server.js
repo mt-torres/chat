@@ -45,6 +45,8 @@ io.on("connection", (socket) => {
 
 	socket.on("disconnect", () => {
 		const user = users[socket.id];
+
+		console.log(user);
 		if (user) {
 			const room = user.room;
 			delete users[socket.id];
@@ -52,7 +54,7 @@ io.on("connection", (socket) => {
 			// Envia uma mensagem de saída para outros usuários na sala
 			socket.to(room).emit(
 				"leftRoom",
-				`${user.username} saiu da sala`
+				`${user.user} saiu da sala.`
 			);
 
 			// Atualiza a lista de usuários na sala

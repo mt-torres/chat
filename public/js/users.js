@@ -2,7 +2,6 @@ const userList = document.querySelector("#user-list");
 
 if (userList) {
 	socket.on("roomUsers", (users) => {
-		console.log(users.length);
 		document.querySelectorAll("#user-card").forEach((i) =>
 			i.remove()
 		);

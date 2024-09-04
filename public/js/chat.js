@@ -2,6 +2,7 @@ const socket = io();
 const usersMsg = document.querySelector("#users-msg");
 const formMsg = document.querySelector("#form-msg");
 const chatHeader = document.querySelector(".header-chat__details");
+const mainChat = document.querySelector(".main-chat");
 
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
@@ -11,12 +12,6 @@ if (window.location.href.includes("chat")) {
 	socket.on("connect", function () {
 		//Preciso do emit para que as mensagens sejam enviadas
 		socket.emit("joinRoom");
-	});
-
-	//mgs do arquivo server.js  socket.broadcast.emit("msg", user + " entrou na sala!");
-	socket.on("joinRoom", function (msg) {
-		const data = `<p>${msg}</p>`;
-		//userList.insertAdjacentHTML("beforeend", data);
 	});
 
 	//envio de mensagem para o evento chatMessage

@@ -102,10 +102,12 @@ footer {
 }
 
 .main-chat {
+  position: relative;
   max-height: 100vh;
   height: 100vh;
   background-color: white;
   padding: 2rem 5rem;
+  overflow-x: hidden;
 }
 
 .main-chat__container {
@@ -251,6 +253,68 @@ footer {
   margin-left: 2rem;
 }
 
+.container-toast {
+  position: absolute;
+  bottom: 130px;
+  right: 50px;
+}
+
+.c-toast {
+  padding: 1rem;
+  border: 1px solid #fff;
+  background-color: #848688;
+  opacity: 0.8;
+  border-radius: 10px;
+  font-size: small;
+  animation-duration: 1s;
+  animation-name: slidein;
+}
+
+.c-toast__header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 0.2rem;
+}
+
+.c-toast__img {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #08bdf9;
+  margin-right: 0.5rem;
+}
+
+.c-toast__timestamp {
+  margin-left: auto;
+}
+
+.c-toast__body {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.c-toast--remove {
+  animation-duration: 1s;
+  animation-name: slideout;
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+@keyframes slideout {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
