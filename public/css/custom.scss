@@ -1,0 +1,386 @@
+//import da fonte
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+// Sobrescreva as variáveis de cores padrão do Bootstrap
+$primary: #c94bab; // 
+$secondary: #d9e757; // 
+$success: #7E6AFC; // 
+
+$info: #08bdf9; // Azul claro
+$warning: #ffc107; // Amarelo
+$danger: #dc3545; // Vermelho
+$light: #f8f9fa; // Cinza claro
+$dark: #343a40; // Cinza escuro
+
+$btn-border-radius: 20px;
+$border-radius: 20px;
+//$border-width:20px;
+
+$font-family-base: 'Quicksand',
+sans-serif;
+// Qualquer outra variável que você queira sobrescrever
+// $body-bg: #ffffff;
+// $body-color: #212529;
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    opacity: .5;
+    border-radius: 10px;
+
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: #646b72;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #08bdf9;
+    border: .5px solid #aadff1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    border-radius: 10px;
+}
+
+
+
+
+//Tela login
+.container-login {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    //padding-top: 7rem;
+    align-items: center;
+}
+
+.login {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70%;
+    padding-right: 2.5rem;
+    justify-content: end;
+}
+
+.login__container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container__logo-1 {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.container__logo-2 {
+    margin-top: 1rem;
+    width: 100%;
+    height: 50px;
+}
+
+.container__logo-text {
+    color: white;
+}
+
+.login__details {
+    height: 100%;
+    width: 48%;
+    z-index: 1;
+    left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.login__form {
+    width: 50%;
+    right: 0;
+    padding: 2rem 3rem 2rem 4rem
+}
+
+.form__btn {
+    border-radius: 20px;
+
+}
+
+.form__input {
+    border-radius: 20px;
+}
+
+//chat
+.main-chat {
+    position: relative;
+    max-height: 100vh;
+    height: 100vh;
+    background-color: white;
+    padding: 2rem 5rem;
+    overflow-x: hidden;
+}
+
+.main-chat__container {
+    display: flex;
+    height: 100%;
+    //padding: 0 2rem;
+}
+
+//container users
+.container-users {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem;
+    width: 15.5rem;
+    margin-right: .5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 100%;
+}
+
+.container-user__header {
+    height: 20%;
+}
+
+.container-users__user-list {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.user-list__card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card__img {
+    width: 30px;
+    //background-color: white;
+}
+
+.card__user-name {
+    margin-left: .5rem;
+    font-size: 0.9rem;
+}
+
+//container das mensagens
+.message-user {
+    background: url(../img/fundo-chat.png);
+    background-size: contain;
+    overflow: auto;
+}
+
+
+//header da div de mensagens
+.header-chat__header {
+    height: 16%;
+    display: flex;
+    background-color: #343a40;
+    color: white;
+    border-top-right-radius: 20px;
+}
+
+.header-chat__img {
+    margin: .5rem .5rem .5rem 1.5rem;
+    border-radius: 50%;
+    width: 78px;
+}
+
+.header-chat__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-chat__text {
+    margin: 0;
+    padding: 0;
+}
+
+.header-chat__users {
+    font-size: small;
+}
+
+.container-chat {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //grid-template-rows: 1fr 5fr;
+
+}
+
+
+.container-chat__message {
+    height: 84%;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+
+}
+
+//Div das mensagens
+
+.container-message {
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.message {
+    //padding: 0.5rem;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #7E6AFC;
+    border-radius: 0px 52px 52px 52px;
+    max-width: 50%;
+    word-wrap: break-word;
+}
+
+.message:first-child {
+    margin-top: 1rem;
+}
+
+.message__info {
+    margin-top: 1.5px;
+    font-size: .7rem;
+}
+
+.message__user-name {
+    font-size: .8rem;
+
+}
+
+.message__data {
+    margin-bottom: .5rem;
+
+}
+
+.container-message--sender {
+    justify-content: end;
+}
+
+.message--sender {
+    border-radius: 52px 0px 52px 52px;
+}
+
+// container do form para enviar mensagens
+.form-container {
+    background-color: #343a40;
+    border-end-end-radius: 20px;
+}
+
+.form-container__form {
+    padding: 1rem 5rem;
+}
+
+.form-container__btn {
+    margin-left: 2rem;
+}
+
+//toast
+
+.container-toast {
+    position: absolute;
+    bottom: 130px;
+    right: 50px;
+
+}
+
+.c-toast {
+    // position: absolute;
+    // bottom: 130px;
+    // right: 50px;
+    padding: 1rem;
+    border: 1px solid #fff;
+    background-color: #848688;
+    opacity: .8;
+    border-radius: 10px;
+    font-size: small;
+    animation-duration: 1s;
+    animation-name: slidein;
+
+}
+
+.c-toast__header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: .2rem;
+
+}
+
+.c-toast__img {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #08bdf9;
+    margin-right: .5rem
+}
+
+.c-toast__title {}
+
+.c-toast__timestamp {
+    margin-left: auto;
+}
+
+.c-toast__body {
+    margin-top: .5rem;
+    text-align: center;
+}
+
+.c-toast__message {}
+
+.c-toast--remove {
+    animation-duration: 1s;
+    animation-name: slideout;
+}
+
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: .8;
+    }
+}
+
+
+@keyframes slideout {
+    from {
+        opacity: .8;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+// Importe o Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";

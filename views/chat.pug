@@ -1,0 +1,25 @@
+extends base
+
+block content
+    main(class="main-chat")
+        div(class="main-chat__container")
+            div(class="container-users")
+                header(class="container-user__header container-users__header d-flex flex-column justify-content-center mb-2 pb-4 border-bottom border-1 border-white")
+                    p(class="") Usuários
+                    form(class="d-flex justify-content-center" role="search")
+                        input(class="form-control border-0" type="search" placeholder="Buscar usuário" aria-label="Search")
+                div(class="container-users__user-list" id="user-list")
+            div(class="container-chat")
+                header(class="header-chat__header" id="container-chat-header")
+                    img(class="header-chat__img" src="../img/logo.jpeg", alt="")
+                    div(class="header-chat__details")
+                        p(class="header-chat__text") #{data.username}, você está na sala #{data.room}
+                div(class="container-chat__message")
+                    div(class="message-user" id="users-msg")
+                    div(class="form-container")
+                        form(class="d-flex form-container__form" id="form-msg")
+                            input(type="text" class="form-control form-container__input" id="input-msg")
+                            button(type="submit" class="btn btn-info form-container__btn") Enviar
+        div(class="container-toast")
+
+
