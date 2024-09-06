@@ -3,7 +3,7 @@ const joinForm = document.querySelector("#join-form");
 if (joinForm) {
 	joinForm.addEventListener("submit", async (e) => {
 		e.preventDefault();
-		const name = document.querySelector("#inputName").value;
+		const userName = document.querySelector("#inputName").value;
 		const room = document.querySelector("#inputRoom").value;
 
 		try {
@@ -13,10 +13,16 @@ if (joinForm) {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					name,
+					userName,
 					room,
 				}),
 			});
+
+			localStorage.setItem(
+				"userData",
+				JSON.stringify({ userName, room })
+			);
+
 			console.log(response);
 
 			if (response.redirected) {
