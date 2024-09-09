@@ -1,4 +1,4 @@
-const socket = io("http://localhost:4000", {
+const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 	transports: ["websocket", "polling"],
 });
 const usersMsg = document.querySelector("#users-msg");
@@ -13,6 +13,7 @@ const room = params.get("room");
 if (window.location.href.includes("chat")) {
 	const userData = JSON.parse(localStorage.getItem("userData"));
 	socket.emit("joinRoom", userData);
+
 	//envio de mensagem para o evento chatMessage
 	formMsg.addEventListener("submit", function (e) {
 		e.preventDefault();

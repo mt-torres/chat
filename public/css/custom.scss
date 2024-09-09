@@ -1,29 +1,35 @@
-//import da fonte
+// *****import da fonte****
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
-// Sobrescreva as variáveis de cores padrão do Bootstrap
+//*******variaveis*******
 $primary: #c94bab; // 
 $secondary: #d9e757; // 
-$success: #7E6AFC; // 
+
+$bg-color-1:#fff;
+$bg-color-2: #343a40; // Cinza escuro
+$bg-color-3: #08bdf9; // 
+
+$font-color-1:#fff;
+$font-color-2: #343a40; // Cinza escuro
+
+$btn-color-1: #343a40; // Cinza escuro
+
+$border-color-1:#dee2e6;
 
 $info: #08bdf9; // Azul claro
 $warning: #ffc107; // Amarelo
 $danger: #dc3545; // Vermelho
-$light: #f8f9fa; // Cinza claro
-$dark: #343a40; // Cinza escuro
+//$light: #f8f9fa; // Cinza claro
 
 $btn-border-radius: 20px;
-$border-radius: 20px;
-//$border-width:20px;
+$border-radius: 32px;
 
 $font-family-base: 'Quicksand',
 sans-serif;
-// Qualquer outra variável que você queira sobrescrever
-// $body-bg: #ffffff;
-// $body-color: #212529;
 
 html,
 body {
+    font-family: $font-family-base;
     height: 100%;
     margin: 0;
 }
@@ -42,6 +48,34 @@ footer {
 
 }
 
+input {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: $bg-color-1;
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    //transition: border-color 0.15s ease-in-out, box-shadow 0.15s
+}
+
+button {
+    font-size: 1rem;
+    outline: none;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    font-weight: 400;
+    font-family: $font-family-base;
+
+}
+
+label {
+    margin-bottom: .5rem;
+}
+
+///***** Personalização barra de scroll********
 ::-webkit-scrollbar {
     width: 8px;
     opacity: .5;
@@ -67,16 +101,17 @@ footer {
 
 
 
-//Tela login
+//*****Tela login******
 .container-login {
     width: 100%;
     height: 85%;
     display: flex;
-    //padding-top: 7rem;
     align-items: center;
 }
 
 .login {
+    display: flex;
+    position: relative;
     width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -104,10 +139,12 @@ footer {
 }
 
 .container__logo-text {
-    color: white;
+    color: $font-color-1;
 }
 
 .login__details {
+    background-color: $bg-color-2;
+    position: absolute;
     height: 100%;
     width: 48%;
     z-index: 1;
@@ -116,24 +153,63 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-items: center;
+    border-radius: $border-radius;
 }
 
 .login__form {
+    box-sizing: border-box;
+    background-color: $bg-color-3;
+    border-radius: $border-radius;
+    height: 100%;
     width: 50%;
     right: 0;
-    padding: 2rem 3rem 2rem 4rem
-}
+    padding: 2rem 3rem 2rem 4rem;
 
-.form__btn {
-    border-radius: 20px;
 
 }
 
-.form__input {
-    border-radius: 20px;
+.login__header {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-//chat
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+
+.login__btn {
+    width: 100%;
+    color: $font-color-1;
+    background-color: $btn-color-1;
+    margin-top: 1rem;
+}
+
+.form__input {}
+
+
+//******footer******
+
+.footer {
+    padding: 0 6rem;
+    display: flex;
+}
+
+.footer__section {
+    padding: 2rem 1rem;
+    border-top: 1px solid $border-color-1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+//*****chat******
 .main-chat {
     position: relative;
     max-height: 100vh;
@@ -196,7 +272,7 @@ footer {
 }
 
 
-//header da div de mensagens
+//*********header da div de mensagens***********
 .header-chat__header {
     height: 16%;
     display: flex;
@@ -231,7 +307,6 @@ footer {
     width: 100%;
     display: flex;
     flex-direction: column;
-    //grid-template-rows: 1fr 5fr;
 
 }
 
@@ -243,7 +318,7 @@ footer {
 
 }
 
-//Div das mensagens
+//***********Div das mensagens**********
 
 .container-message {
     margin-bottom: 1rem;
@@ -251,7 +326,6 @@ footer {
 }
 
 .message {
-    //padding: 0.5rem;
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
@@ -288,7 +362,7 @@ footer {
     border-radius: 52px 0px 52px 52px;
 }
 
-// container do form para enviar mensagens
+//  ******container do form para enviar mensagens********
 .form-container {
     background-color: #343a40;
     border-end-end-radius: 20px;
@@ -302,7 +376,7 @@ footer {
     margin-left: 2rem;
 }
 
-//toast
+//*****toast*******
 
 .container-toast {
     position: absolute;
@@ -312,9 +386,6 @@ footer {
 }
 
 .c-toast {
-    // position: absolute;
-    // bottom: 130px;
-    // right: 50px;
     padding: 1rem;
     border: 1px solid #fff;
     background-color: #848688;
@@ -381,6 +452,3 @@ footer {
         opacity: 0;
     }
 }
-
-// Importe o Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
