@@ -5,7 +5,9 @@ html(lang="pt-BR")
             meta(charset='UTF-8')
             meta(name='viewport' content='width=device-width, initial-scale=1.0')
             link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
-            link(rel="stylesheet" href="../css/custom.css")
+            link(rel="stylesheet" href="../css/reset.css")
+            link(rel="stylesheet" href="../css/style.css")
+            script(src="https://cdn.socket.io/4.7.5/socket.io.min.js")
             title Chat | #{title}
 
     body
@@ -14,12 +16,12 @@ html(lang="pt-BR")
         //-     include _header 
         //CONTENT
         block content
-            
+
         //FOOTER
         - if(title === 'Join Chat')   
-            include _footer  
-        script(src="/socket.io/socket.io.js")
+            include _footer
         script(src="/js/index.js")
-        script(src="/js/chat.js")
-        script(src="/js/users.js")
-        script(src="/js/toast.js")
+        - if(title !== 'Join Chat') 
+            script(src="/js/chat.js")
+            script(src="/js/users.js")
+            script(src="/js/toast.js")

@@ -3,24 +3,26 @@ const joinForm = document.querySelector("#join-form");
 if (joinForm) {
 	joinForm.addEventListener("submit", async (e) => {
 		e.preventDefault();
-		const name = document.querySelector("#inputName").value;
+		const userName = document.querySelector("#inputName").value;
 		const room = document.querySelector("#inputRoom").value;
 
 		try {
-			const response = await fetch(
-				"http://localhost:3000/chat",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type":
-							"application/json",
-					},
-					body: JSON.stringify({
-						name,
-						room,
-					}),
-				}
+			const response = await fetch("/chat", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					userName,
+					room,
+				}),
+			});
+
+			localStorage.setItem(
+				"userData",
+				JSON.stringify({ userName, room })
 			);
+
 			console.log(response);
 
 			if (response.redirected) {

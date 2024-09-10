@@ -1,4 +1,6 @@
-const socket = io();
+const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
+	transports: ["websocket", "polling"],
+});
 const usersMsg = document.querySelector("#users-msg");
 const formMsg = document.querySelector("#form-msg");
 const chatHeader = document.querySelector(".header-chat__details");
@@ -9,16 +11,17 @@ const username = params.get("username");
 const room = params.get("room");
 
 if (window.location.href.includes("chat")) {
-	socket.on("connect", function () {
-		//Preciso do emit para que as mensagens sejam enviadas
-		socket.emit("joinRoom");
-	});
+	const userData = JSON.parse(localStorage.getItem("userData"));
+	socket.emit("joinRoom", userData);
 
 	//envio de mensagem para o evento chatMessage
 	formMsg.addEventListener("submit", function (e) {
 		e.preventDefault();
 		const msgToBeSend = document.querySelector("#input-msg");
-		socket.emit("chatMessage", msgToBeSend.value);
+		socket.emit("chatMessage", {
+			userData,
+			msgToBeSend: msgToBeSend.value,
+		});
 		msgToBeSend.value = "";
 	});
 
@@ -26,23 +29,24 @@ if (window.location.href.includes("chat")) {
 	socket.on("message", (data) => {
 		const html = ` 
 			<div class="container-message  ${
-				data.user == username
+				data.userName == username
 					? "container-message--sender"
 					: ""
 			}">
-				<div class="message ${data.user == username ? "message--sender" : ""}">
+				<div class="message ${data.userName == username ? "message--sender" : ""}">
 					<div class="message__info">
-						<small class="message__user-name">${data.user} |</small>
+						<small class="message__user-name">${data.userName} |</small>
 						<small class="message__user-date">11 mins ago</small>
 					</div>
 					<div class="message__data">
-						${data.msg}
+						${data.msgToBeSend}
 					</div>
 				</div>
 			</div>
 		`;
 		usersMsg.insertAdjacentHTML("beforeend", html);
 	});
+
 	//contabiliza a quantidade de usuarios na sala
 	socket.on("roomUsers", (users) => {
 		document.querySelectorAll(".header-chat__users").forEach((i) =>
