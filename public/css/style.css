@@ -9,10 +9,10 @@ body {
 body {
   position: relative;
   min-height: 100%;
-  overflow: hidden;
 }
 
 input {
+  font-family: "Quicksand", sans-serif;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -24,6 +24,7 @@ input {
 }
 
 button {
+  cursor: pointer;
   font-size: 1rem;
   outline: none;
   padding: 0.5rem 1rem;
@@ -216,36 +217,56 @@ label {
     padding: 1rem 1rem;
   }
 }
-.main-chat {
+.chat {
+  box-sizing: border-box;
   position: relative;
   max-height: 100vh;
   height: 100vh;
   background-color: white;
   padding: 2rem 5rem;
-  overflow-x: hidden;
 }
 
-.main-chat__container {
+.chat__container {
   display: flex;
   height: 100%;
 }
 
-.container-users {
+.chat-users {
+  box-sizing: border-box;
   background-color: #343a40;
   color: white;
   padding: 1rem;
-  width: 15.5rem;
   margin-right: 0.5px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   height: 100%;
 }
 
-.container-user__header {
-  height: 20%;
+.chat-users__header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  padding: 0 0 1.5rem 0;
+  border-bottom: 1px solid #dee2e6;
 }
 
-.container-users__user-list {
+.chat-users__title {
+  margin-top: 0.5rem;
+}
+
+.chat-users__form {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-users__search-input {
+  width: 100%;
+}
+
+.chat-users__user-list {
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -258,116 +279,205 @@ label {
   margin-bottom: 1rem;
 }
 
-.card__img {
+.user-list__card-img {
   width: 30px;
 }
 
-.card__user-name {
+.user-list__name {
   margin-left: 0.5rem;
   font-size: 0.9rem;
 }
 
-.message-user {
-  background: url(../img/fundo-chat.png);
-  background-size: contain;
-  overflow: auto;
+.chat-messages {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.header-chat__header {
+.chat-messages__header {
   height: 16%;
   display: flex;
   background-color: #343a40;
   color: white;
   border-top-right-radius: 20px;
+  position: relative;
 }
 
-.header-chat__img {
+.chat-messages__hambuguer-menu {
+  display: none;
+  position: absolute;
+  right: 9px;
+  top: 5px;
+  width: 42px;
+  height: 50px;
+  background-image: url(../img/mobile-menu.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.chat-messages__hambuguer-menu--click {
+  transform: rotate(90deg);
+}
+
+.chat-messages__img {
   margin: 0.5rem 0.5rem 0.5rem 1.5rem;
   border-radius: 50%;
-  width: 78px;
 }
 
-.header-chat__details {
+.chat-messages__details {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.header-chat__text {
+.chat-messages__text {
   margin: 0;
   padding: 0;
 }
 
-.header-chat__users {
+.chat-messages__users {
+  margin-top: 0.5rem;
   font-size: small;
 }
 
-.container-chat {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.container-chat__message {
+.chat-messages__container {
   height: 84%;
   display: grid;
   grid-template-rows: 5fr 1fr;
 }
 
-.container-message {
-  margin-bottom: 1rem;
+.chat-messages__displayer {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: url(../img/fundo-chat.png);
+  background-size: contain;
+}
+
+.display-message__container {
+  margin-left: 1rem;
+  margin-top: 1rem;
   display: flex;
 }
 
-.message {
-  padding: 0 1.5rem;
+.display-message__container--sender {
+  justify-content: end;
+  margin-right: 1rem;
+}
+
+.display-message__message {
+  padding: 0 0.8rem;
   display: flex;
   flex-direction: column;
   background-color: #7E6AFC;
   border-radius: 0px 52px 52px 52px;
-  max-width: 50%;
-  word-wrap: break-word;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .display-message__message {
+    animation: fade-in-left 0.2s ease-in-out;
+    animation-composition: replace;
+  }
 }
 
-.message:first-child {
-  margin-top: 1rem;
+.display-message__message--sender {
+  border-radius: 52px 0px 52px 52px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .display-message__message--sender {
+    animation: fade-in-right 0.2s ease-in-out;
+    animation-composition: replace;
+  }
 }
 
-.message__info {
-  margin-top: 1.5px;
+@keyframes fade-in-right {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+@keyframes fade-in-left {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}
+.display-message__message-info {
+  display: flex;
+  justify-content: end;
+  margin-top: 0.2rem;
   font-size: 0.7rem;
 }
 
-.message__user-name {
-  font-size: 0.8rem;
+.display-message__user-name {
+  font-size: 0.6rem;
 }
 
-.message__data {
-  margin-bottom: 0.5rem;
+.display-message__user-date {
+  display: none;
 }
 
-.container-message--sender {
-  justify-content: end;
+.display-message__message-data {
+  font-size: 0.9rem;
+  text-align: start;
+  margin: 0.2rem 0 0.5rem 0;
 }
 
-.message--sender {
-  border-radius: 52px 0px 52px 52px;
-}
-
-.form-container {
+.chat-messages__form {
   background-color: #343a40;
   border-end-end-radius: 20px;
+  padding: 1rem 3rem;
+  display: flex;
 }
 
-.form-container__form {
-  padding: 1rem 5rem;
+.chat-messages_input-message {
+  width: 90%;
+  font-family: "Quicksand", sans-serif;
+  resize: none;
+  border-radius: 10px;
+  border: none;
+  padding: 0.5rem 1rem;
+  outline: none;
 }
 
-.form-container__btn {
+.chat-messages__btn-send {
   margin-left: 2rem;
+  background-color: #08bdf9;
 }
 
+@media (max-width: 600px) {
+  .chat {
+    padding: 0.5rem;
+    overflow: hidden;
+  }
+  .chat__users {
+    position: absolute;
+    z-index: 1;
+    height: 50%;
+    width: 180px;
+    border-radius: 20px;
+    right: -210px;
+    transition: right 0.5s ease;
+  }
+  .chat-messages__hambuguer--fadein {
+    right: 8px;
+  }
+  .chat-messages__header {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .chat-messages__form {
+    padding: 1rem 1rem;
+    border-bottom-left-radius: 20px;
+  }
+  .chat-messages__text {
+    font-size: 0.8rem;
+  }
+  .chat-messages__hambuguer-menu {
+    display: block;
+  }
+}
 .container-toast {
   position: absolute;
   bottom: 130px;

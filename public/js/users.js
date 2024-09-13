@@ -9,8 +9,8 @@ if (userList) {
 		users.forEach((i) => {
 			const html = `
             <div class="user-list__card" id="user-card">
-                <img class="card__img" src="../img/person-circle.svg" , alt=""></img>
-                <span class="card__user-name ml-2">${i.userName}</span>
+                <img class="user-list__card-img" src="../img/person-circle.svg" , alt=""></img>
+                <span class="user-list__name">${i.userName}</span>
             </div>`;
 			userList.insertAdjacentHTML("beforeend", html);
 		});

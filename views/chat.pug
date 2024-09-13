@@ -1,25 +1,27 @@
 extends base
 
 block content
-    main(class="main-chat")
-        div(class="main-chat__container")
-            div(class="container-users")
-                header(class="container-user__header container-users__header d-flex flex-column justify-content-center mb-2 pb-4 border-bottom border-1 border-white")
-                    p(class="") Usuários
-                    form(class="d-flex justify-content-center" role="search")
-                        input(class="form-control border-0" type="search" placeholder="Buscar usuário" aria-label="Search")
-                div(class="container-users__user-list" id="user-list")
-            div(class="container-chat")
-                header(class="header-chat__header" id="container-chat-header")
-                    img(class="header-chat__img" src="../img/logo.jpeg", alt="")
-                    div(class="header-chat__details")
-                        p(class="header-chat__text") #{data.username}, você está na sala #{data.room}
-                div(class="container-chat__message")
-                    div(class="message-user" id="users-msg")
-                    div(class="form-container")
-                        form(class="d-flex form-container__form" id="form-msg")
-                            input(type="text" class="form-control form-container__input" id="input-msg")
-                            button(type="submit" class="btn btn-info form-container__btn") Enviar
+    main(class="chat")
+        div(class="chat__container")
+            section(class="chat__users chat-users")
+                header(class="chat-users__header")
+                    p(class="chat-users__title") Usuários
+                    form(class="chat-users__form" role="search")
+                        input(class="chat-users__search-input" type="search" placeholder="Buscar usuário" aria-label="Search")
+                div(class="chat-users__user-list user-list" id="user-list") 
+                    //- vai receber os usuarios da sala        
+            section(class="chat__messages chat-messages")
+                header(class="chat-messages__header" id="container-chat-header")
+                    nav(class="chat-messages__hambuguer-menu" id="hambuguer-menu")
+                    img(class="chat-messages__img" src="../img/logo.jpeg", alt="")
+                    div(class="chat-messages__details" id="users-available")
+                        p(class="chat-messages__text") #{data.username}, você está na sala #{data.room}
+                div(class="chat-messages__container")
+                    div(class="chat-messages__displayer display-message" id="users-msg")
+                        //- vai receber as mensagens     
+                    form(class="chat-messages__form" id="form-msg")
+                        textarea(type="text" class="chat-messages_input-message" id="input-msg" placeholder="Digite uma mensagem")
+                        button(type="submit" class="chat-messages__btn-send") Enviar
         div(class="container-toast")
 
 

@@ -3,8 +3,9 @@ const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 });
 const usersMsg = document.querySelector("#users-msg");
 const formMsg = document.querySelector("#form-msg");
-const chatHeader = document.querySelector(".header-chat__details");
-const mainChat = document.querySelector(".main-chat");
+const chatHeader = document.querySelector("#users-available");
+const mainChat = document.querySelector(".chat");
+const inputMessage = document.querySelector("#input-msg");
 
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
@@ -17,30 +18,46 @@ if (window.location.href.includes("chat")) {
 	//envio de mensagem para o evento chatMessage
 	formMsg.addEventListener("submit", function (e) {
 		e.preventDefault();
-		const msgToBeSend = document.querySelector("#input-msg");
+
 		socket.emit("chatMessage", {
 			userData,
-			msgToBeSend: msgToBeSend.value,
+			msgToBeSend: inputMessage.value,
 		});
-		msgToBeSend.value = "";
+		inputMessage.value = "";
 	});
 
+	//envio de mensagem para o evento chatMessage
+	inputMessage.addEventListener("keydown", function (e) {
+		if (e.key === "Enter" && !e.shiftKey) {
+			e.preventDefault();
+			socket.emit("chatMessage", {
+				userData,
+				msgToBeSend: inputMessage.value,
+			});
+			inputMessage.value = "";
+		}
+	});
 	//message é referente ao io.emit("message", msg) from server.js
 	socket.on("message", (data) => {
+		const message = data.msgToBeSend.replace("\n", "<br>");
 		const html = ` 
-			<div class="container-message  ${
+			<div class="display-message__container  ${
 				data.userName == username
-					? "container-message--sender"
+					? "display-message__container--sender"
 					: ""
 			}">
-				<div class="message ${data.userName == username ? "message--sender" : ""}">
-					<div class="message__info">
-						<small class="message__user-name">${data.userName} |</small>
-						<small class="message__user-date">11 mins ago</small>
+				<div class="display-message__message ${
+					data.userName == username
+						? "display-message__message--sender"
+						: ""
+				}">
+					<div class="display-message__message-info">
+						<span class="display-message__user-name">${data.userName}</small>
+						<span class="display-message__user-date"> 11 mins ago</small>
 					</div>
-					<div class="message__data">
-						${data.msgToBeSend}
-					</div>
+					<p class="display-message__message-data">
+						${message}
+					</p>
 				</div>
 			</div>
 		`;
@@ -49,11 +66,11 @@ if (window.location.href.includes("chat")) {
 
 	//contabiliza a quantidade de usuarios na sala
 	socket.on("roomUsers", (users) => {
-		document.querySelectorAll(".header-chat__users").forEach((i) =>
-			i.remove()
+		document.querySelectorAll(".chat-messages__users").forEach(
+			(i) => i.remove()
 		);
 		const html = `
-			<span class="header-chat__users"> ${users.length} ${
+			<span class="chat-messages__users"> ${users.length} ${
 			users.length == 1 ? "usuário ativo" : "usuários ativos"
 		} </span>`;
 		chatHeader.insertAdjacentHTML("beforeend", html);
