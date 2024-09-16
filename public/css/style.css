@@ -220,8 +220,7 @@ label {
 .chat {
   box-sizing: border-box;
   position: relative;
-  max-height: 100vh;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   padding: 2rem 5rem;
 }
@@ -459,9 +458,11 @@ label {
     border-radius: 20px;
     right: -210px;
     transition: right 0.5s ease;
+    margin-top: 1.5rem;
   }
   .chat-messages__hambuguer--fadein {
     right: 8px;
+    margin-top: 1.5rem;
   }
   .chat-messages__header {
     border-top-right-radius: 20px;
@@ -476,6 +477,16 @@ label {
   }
   .chat-messages__hambuguer-menu {
     display: block;
+  }
+}
+@media (min-width: 1367px) {
+  .chat {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .chat__container {
+    width: 1286px;
   }
 }
 .container-toast {
