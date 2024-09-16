@@ -120,6 +120,7 @@ label {
   align-items: center;
   justify-items: center;
   border-radius: 32px;
+  box-shadow: 11px 9px 44px -8px rgba(0, 0, 0, 0.75);
 }
 
 .login__form {
@@ -129,6 +130,7 @@ label {
   height: 100%;
   width: 50%;
   padding: 2rem 3rem 2rem 4rem;
+  box-shadow: 11px 9px 44px -8px rgba(0, 0, 0, 0.75);
 }
 
 .login__header {
@@ -148,7 +150,16 @@ label {
   width: 100%;
   color: #fff;
   background-color: #343a40;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   margin-top: 1rem;
+  box-shadow: 11px 9px 44px -15px rgba(0, 0, 0, 0.75);
+}
+.login__btn:hover {
+  background-color: #272727;
+}
+.login__btn:active {
+  box-shadow: none;
 }
 
 @media (max-width: 600px) {
@@ -171,6 +182,7 @@ label {
     width: 100%;
     height: 55%;
     left: 0rem;
+    box-shadow: 1px 6px 65px -8px rgba(0, 0, 0, 0.5);
   }
   .login__form {
     width: 100%;
@@ -178,12 +190,15 @@ label {
     height: 50%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    box-shadow: 1px 6px 65px -8px rgba(0, 0, 0, 0.5);
   }
   .login__header {
     font-size: 2rem;
     margin: 0.7rem 0;
   }
   .login__btn {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     width: 100%;
     margin-top: 0.4rem;
     margin-bottom: 1rem;
@@ -444,6 +459,9 @@ label {
   margin-left: 2rem;
   background-color: #08bdf9;
 }
+.chat-messages__btn-send:hover {
+  background-color: #3acdfd;
+}
 
 @media (max-width: 600px) {
   .chat {
@@ -458,15 +476,13 @@ label {
     border-radius: 20px;
     right: -210px;
     transition: right 0.5s ease;
-    margin-top: 1.5rem;
+    margin-top: 3.5rem;
+    box-shadow: 1px 6px 65px -8px rgba(0, 0, 0, 0.75);
   }
   .chat-messages__hambuguer--fadein {
     right: 8px;
-    margin-top: 1.5rem;
-  }
-  .chat-messages__header {
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+    margin-top: 3.5rem;
+    box-shadow: 1px 6px 65px -8px rgba(0, 0, 0, 0.75);
   }
   .chat-messages__form {
     padding: 1rem 1rem;
