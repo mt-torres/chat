@@ -353,8 +353,9 @@ label {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 5fr 0.5fr;
 }
-
 .chat-users__header {
   box-sizing: border-box;
   display: flex;
@@ -364,26 +365,29 @@ label {
   padding: 0 0 1.5rem 0;
   border-bottom: 1px solid #dee2e6;
 }
-
 .chat-users__title {
   margin-top: 0.5rem;
 }
-
 .chat-users__form {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
-
 .chat-users__search-input {
   width: 100%;
 }
-
 .chat-users__user-list {
-  height: 80%;
   display: flex;
   flex-direction: column;
   overflow: auto;
+}
+.chat-users__exit {
+  padding-top: 1.5rem;
+  width: 100%;
+  border-top: 1px solid #dee2e6;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .user-list__card {

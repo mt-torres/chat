@@ -15,7 +15,10 @@ block content
                     form(class="chat-users__form" role="search")
                         input(class="chat-users__search-input" type="search" placeholder="Buscar usuário" aria-label="Search")
                 div(class="chat-users__user-list user-list" id="user-list") 
-                    //- vai receber os usuarios da sala        
+                    //- vai receber os usuarios da sala
+                div(class="chat-users__exit")    
+                    a(class="chat-users__exit-anchor" href="/") 
+                        button(class="chat-users__exit-btn") Voltar       
             section(class="chat__messages chat-messages")
                 header(class="chat-messages__header" id="container-chat-header")
                     nav(class="chat-messages__hambuguer-menu" id="hambuguer-menu")
