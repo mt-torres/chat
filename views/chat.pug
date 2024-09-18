@@ -2,7 +2,13 @@ extends base
 
 block content
     main(class="chat")
-        div(class="chat__container")
+        div(class="chat__connection-alert connection-alert")
+            p(class="connection-alert__text") Conectando-se ao servidor
+            div(class ="connection-alert__icons")
+                div(class="connection-alert__flip")
+                    div(class="connection-alert__spiner")
+                    div(class="connection-alert__connected")
+        div(class="chat__container") 
             section(class="chat__users chat-users")
                 header(class="chat-users__header")
                     p(class="chat-users__title") Usuários

@@ -1,11 +1,14 @@
 const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 	transports: ["websocket", "polling"],
 });
+
 const usersMsg = document.querySelector("#users-msg");
 const formMsg = document.querySelector("#form-msg");
 const chatHeader = document.querySelector("#users-available");
 const mainChat = document.querySelector(".chat");
 const inputMessage = document.querySelector("#input-msg");
+const loadFlip = document.querySelector(".connection-alert__flip");
+const loadText = document.querySelector(".connection-alert__text");
 
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
@@ -13,6 +16,19 @@ const room = params.get("room");
 
 if (window.location.href.includes("chat")) {
 	const userData = JSON.parse(localStorage.getItem("userData"));
+	//verificando se o server está on
+	socket.on("connect", () => {
+		console.log("Conectado ao servidor WebSocket");
+		loadFlip.classList.toggle("connection-alert__connected--show");
+		loadText.innerHTML = "";
+		loadText.innerHTML = "Conectado com sucesso!";
+
+		//remover o modal
+		document.querySelector(".connection-alert").classList.add(
+			"connection-alert--remove"
+		);
+	});
+
 	socket.emit("joinRoom", userData);
 
 	//envio de mensagem para o evento chatMessage

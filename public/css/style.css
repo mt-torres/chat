@@ -240,6 +240,105 @@ label {
   padding: 2rem 5rem;
 }
 
+.connection-alert {
+  border-radius: 32px;
+  padding: 2rem 1rem;
+  position: absolute;
+  top: calc(50% - 100px);
+  width: 300px;
+  height: 100px;
+  left: calc(50% - 100px);
+  background-color: #343a40;
+  z-index: 1;
+  box-shadow: 11px 9px 44px -8px rgba(0, 0, 0, 0.75);
+}
+.connection-alert__text {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.connection-alert__icons {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  perspective: 1000px;
+}
+.connection-alert__flip {
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.connection-alert__spiner {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  color: #08bdf9;
+  width: 70px;
+  /* control the size */
+  aspect-ratio: 1;
+  display: grid;
+  -webkit-mask: conic-gradient(from 15deg, rgba(0, 0, 0, 0.2), #000);
+  mask: conic-gradient(from 15deg, rgba(0, 0, 0, 0.2), #000);
+  animation: load 1s steps(12) infinite;
+  background: radial-gradient(closest-side at 50% 12.5%, currentColor 90%, rgba(0, 0, 0, 0) 98%) 50% 0/20% 80% repeat-y, radial-gradient(closest-side at 12.5% 50%, currentColor 90%, rgba(0, 0, 0, 0) 98%) 0 50%/80% 20% repeat-x;
+}
+.connection-alert__spiner::before, .connection-alert__spiner::after {
+  background: radial-gradient(closest-side at 50% 12.5%, currentColor 90%, rgba(0, 0, 0, 0) 98%) 50% 0/20% 80% repeat-y, radial-gradient(closest-side at 12.5% 50%, currentColor 90%, rgba(0, 0, 0, 0) 98%) 0 50%/80% 20% repeat-x;
+}
+.connection-alert__spiner::before, .connection-alert__spiner::after {
+  content: "";
+  grid-area: 1/1;
+  transform: rotate(30deg);
+}
+.connection-alert__spiner::after {
+  transform: rotate(60deg);
+}
+@keyframes load {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+.connection-alert__connected {
+  position: absolute;
+  top: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  width: 70px;
+  height: 70px;
+  background-image: url("../img/check.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotateY(180deg);
+}
+.connection-alert__connected--show {
+  transform: rotateY(180deg);
+}
+.connection-alert--remove {
+  animation: modal-remove 1.5s ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes modal-remove {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .chat__container {
   display: flex;
   height: 100%;
@@ -467,6 +566,13 @@ label {
   .chat {
     padding: 0.5rem;
     overflow: hidden;
+  }
+  .connection-alert {
+    top: 150px;
+    left: calc(50% - 168px);
+  }
+  .chat-messages__header {
+    border-top-left-radius: 20px;
   }
   .chat__users {
     position: absolute;
