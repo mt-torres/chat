@@ -1,3 +1,5 @@
+import socket from "./chat.js";
+
 const userList = document.querySelector("#user-list");
 
 if (userList) {

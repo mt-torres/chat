@@ -41,6 +41,7 @@ body {
 body {
     position: relative;
     min-height: 100%;
+    overflow-x: hidden;
 
 }
 
@@ -786,75 +787,272 @@ label {
 
 .container-toast {
     position: absolute;
-    bottom: 130px;
+    top: 30px;
     right: 50px;
-
 }
 
 .c-toast {
+    z-index: 4;
+    position: absolute;
     padding: 1rem;
     border: 1px solid #fff;
     background-color: #848688;
-    opacity: .8;
+    opacity: 1;
     border-radius: 10px;
     font-size: small;
-    animation-duration: 1s;
-    animation-name: slidein;
+    width: 200px;
+    //animation: slideIn .4s ease-in-out;
+   // animation-fill-mode: forwards;
+    //transition: right .4s ease-in-out;
+    
+    //animation: name duration timing-function delay iteration-count direction fill-mode;
+    transition: all .4s ease-in-out;
 
-}
+   
 
-.c-toast__header {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff;
-    padding-bottom: .2rem;
+    &__header {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #fff;
+        padding-bottom: .2rem;
 
-}
-
-.c-toast__img {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    background-color: #08bdf9;
-    margin-right: .5rem
-}
-
-.c-toast__title {}
-
-.c-toast__timestamp {
-    margin-left: auto;
-}
-
-.c-toast__body {
-    margin-top: .5rem;
-    text-align: center;
-}
-
-.c-toast__message {}
-
-.c-toast--remove {
-    animation-duration: 1s;
-    animation-name: slideout;
-}
-
-
-@keyframes slidein {
-    from {
-        opacity: 0;
     }
 
-    to {
-        opacity: .8;
+    &__img {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: #08bdf9;
+        margin-right: .5rem
     }
+
+    &__title {}
+
+    &__timestamp {
+        margin-left: auto;
+    }
+
+    &__body {
+        margin-top: .5rem;
+        text-align: center;
+    }
+
+    &__message {}
+
+    &--show{
+        z-index: 4;
+        animation: slideIn .4s ease-in-out,  removeElement .5s ease-in 5s;
+        animation-fill-mode: forwards;
+    }
+
+    &--change-position-second {
+        z-index: 3;
+        transform: translateX(-200px);
+        animation: changePositionSecond .5s ease-in-out .1s, removeElement .5s ease-in 5s;
+        animation-fill-mode: forwards;
+        
+
+    }
+
+    &--change-position-third {
+        z-index: 2;
+        transform: translateX(-250px);
+        animation: changePositionThird .5s ease-in-out .1s, removeElement .5s ease-in 5s;
+        animation-fill-mode: forwards;
+
+    }
+
+    &--change-position-first-hover{
+        transform: translateX(-200px);
+        animation: teste .0s ease-in 0s;
+        animation-fill-mode: forwards;
+    }
+
+
+    &--change-position-second-hover{
+        animation: changePositionSecondHover .4s ease;
+        animation-fill-mode: forwards;
+        z-index: 3;
+    }
+
+    &--change-position-third-hover{
+        animation: changePositionThirdHover .4s ease;
+        animation-fill-mode: forwards;
+        z-index: 2;
+    }
+
+    &--change-position-first-leave{
+        transform: translateX(-200px);
+        animation: removeElement .5s ease-in 5s;
+        animation-fill-mode: forwards;
+    }
+
+    &--change-position-second-leave{
+        animation: changePositionSecondLeave .4s ease, removeElement .5s ease-in 5s;;
+        animation-fill-mode: forwards;
+        z-index: 3;
+    }
+
+    &--change-position-third-leave{
+        animation: changePositionThirdLeave .4s ease, removeElement .5s ease-in 5s;;
+        animation-fill-mode: forwards;
+        z-index: 2;
+    }
+
+    @keyframes teste {
+        from {
+            transform: translateX(-200px)
+        }
+
+        to {
+            transform: translateX(-200px)
+        }
+    }
+
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(1000px)
+        }
+
+        to {
+            transform: translateX(-200px)
+        }
+    }
+
+
+    @keyframes changePositionSecond {
+        to {
+            transform: translateX(-250px) scale(0.9);
+        }
+    }
+
+    @keyframes changePositionSecondHover {
+        from{
+            transform: translateX(-250px) scale(0.9);
+        }
+        to {
+            transform: translateX(-439px) scale(1);
+        }
+    }
+
+    @keyframes changePositionSecondLeave {
+        from{
+            transform: translateX(-439px) scale(1);
+        }
+        to {
+            transform: translateX(-250px) scale(0.9);
+
+        }
+    }
+
+    @keyframes changePositionThird{
+        to {
+            transform: translateX(-300px) scale(0.8);
+        }
+    }
+
+    @keyframes changePositionThirdHover{
+        from{
+            transform: translateX(-300px) scale(0.8);
+        }
+        to {
+            transform: translateX(-680px) scale(1);
+        }
+    }
+
+    @keyframes changePositionThirdLeave{
+        from{
+            transform: translateX(-680px) scale(1);
+
+        }
+        to {
+            transform: translateX(-300px) scale(0.8);
+
+        }
+    }
+
+    @keyframes removeElement{
+        from{
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+  
+
 }
 
 
-@keyframes slideout {
-    from {
-        opacity: .8;
-    }
 
-    to {
-        opacity: 0;
-    }
-}
+// .c-toast {
+//     padding: 1rem;
+//     border: 1px solid #fff;
+//     background-color: #848688;
+//     opacity: .8;
+//     border-radius: 10px;
+//     font-size: small;
+//     transition: all 1s ease;
+//     animation: slideIn;
+//     animation-duration: .3s;
+//     animation-fill-mode: forwards;
+
+
+//     &__header {
+//         display: flex;
+//         align-items: center;
+//         border-bottom: 1px solid #fff;
+//         padding-bottom: .2rem;
+
+//     }
+
+//     &__img {
+//         height: 10px;
+//         width: 10px;
+//         border-radius: 50%;
+//         background-color: #08bdf9;
+//         margin-right: .5rem
+//     }
+
+//     &__title {}
+
+//     &__timestamp {
+//         margin-left: auto;
+//     }
+
+//     &__body {
+//         margin-top: .5rem;
+//         text-align: center;
+//     }
+
+//     &__message {}
+
+//     &--remove {
+//         animation: slideOut;
+//         animation-duration: .3s;
+//         animation-fill-mode: forwards;
+
+//     }
+
+//     @keyframes slideIn {
+//         from {
+//             transform: translateX(1000px)
+//         }
+
+//         to {
+//             transform: translateX(-150px)
+//         }
+//     }
+
+//     @keyframes slideOut {
+//         from {
+//             transform: translateX(-5px)
+//         }
+
+//         to {
+//             transform: translateX(1000px)
+//         }
+//     }
+
+// }

@@ -1,3 +1,9 @@
+// const socket = io("http://localhost:4000/", {
+// 	transports: ["websocket", "polling"],
+// });
+
+import toast from "./toast.js";
+
 const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 	transports: ["websocket", "polling"],
 });
@@ -9,6 +15,7 @@ const mainChat = document.querySelector(".chat");
 const inputMessage = document.querySelector("#input-msg");
 const loadFlip = document.querySelector(".connection-alert__flip");
 const loadText = document.querySelector(".connection-alert__text");
+const containerToast = document.querySelector(".container-toast");
 
 const params = new URLSearchParams(window.location.search);
 const username = params.get("username");
@@ -30,6 +37,16 @@ if (window.location.href.includes("chat")) {
 	});
 
 	socket.emit("joinRoom", userData);
+
+	//mostrar mensagens de quem entra na sala
+	socket.on("joinRoom", function (msg) {
+		toast(containerToast, msg);
+	});
+
+	//Mostrar mensagem de quem saiu da sala
+	socket.on("leftRoom", function (msg) {
+		toast(containerToast, msg);
+	});
 
 	//envio de mensagem para o evento chatMessage
 	formMsg.addEventListener("submit", function (e) {
@@ -92,3 +109,5 @@ if (window.location.href.includes("chat")) {
 		chatHeader.insertAdjacentHTML("beforeend", html);
 	});
 }
+
+export default socket;

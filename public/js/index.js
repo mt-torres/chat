@@ -1,4 +1,7 @@
+import toast from "./toast.js";
+
 const joinForm = document.querySelector("#join-form");
+const containerToast = document.querySelector(".container-toast");
 
 if (joinForm) {
 	joinForm.addEventListener("submit", async (e) => {
@@ -23,13 +26,11 @@ if (joinForm) {
 				JSON.stringify({ userName, room })
 			);
 
-			console.log(response);
-
 			if (response.redirected) {
 				window.location.href = response.url;
 			} else {
 				const data = await response.json();
-				console.log(data);
+				toast(containerToast, data.message, "Erro");
 			}
 		} catch (err) {
 			console.log(err);
