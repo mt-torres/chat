@@ -4,24 +4,23 @@
 
 import toast from "./toast.js";
 
-const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
+export const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 	transports: ["websocket", "polling"],
 });
 
-const usersMsg = document.querySelector("#users-msg");
-const formMsg = document.querySelector("#form-msg");
-const chatHeader = document.querySelector("#users-available");
-const mainChat = document.querySelector(".chat");
-const inputMessage = document.querySelector("#input-msg");
-const loadFlip = document.querySelector(".connection-alert__flip");
-const loadText = document.querySelector(".connection-alert__text");
-const containerToast = document.querySelector(".container-toast");
 
-const params = new URLSearchParams(window.location.search);
-const username = params.get("username");
-const room = params.get("room");
-
-if (window.location.href.includes("chat")) {
+export function chat() {
+	const usersMsg = document.querySelector("#users-msg");
+	const formMsg = document.querySelector("#form-msg");
+	const chatHeader = document.querySelector("#users-available");
+	const inputMessage = document.querySelector("#input-msg");
+	const loadFlip = document.querySelector(".connection-alert__flip");
+	const loadText = document.querySelector(".connection-alert__text");
+	const containerToast = document.querySelector(".container-toast");
+	
+	const params = new URLSearchParams(window.location.search);
+	const username = params.get("username");
+	
 	const userData = JSON.parse(localStorage.getItem("userData"));
 	//verificando se o server está on
 	socket.on("connect", () => {
@@ -110,4 +109,3 @@ if (window.location.href.includes("chat")) {
 	});
 }
 
-export default socket;

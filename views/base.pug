@@ -8,7 +8,7 @@ html(lang="pt-BR")
             link(rel="stylesheet" href="../css/reset.css")
             link(rel="stylesheet" href="../css/style.css")
             script(src="https://cdn.socket.io/4.7.5/socket.io.min.js")
-            title Chat | #{title}
+            title Baco Chat | #{title}
 
     body
         - if(title === 'Join Chat')  
@@ -23,9 +23,5 @@ html(lang="pt-BR")
             //CONTENT
             block content
 
-    - if(title !== 'Join Chat') 
-        script(type="module" src="/js/chat.js")
-        script(type="module" src="/js/users.js")
-        script(type="module" src="/js/mobile.js")
-    - else
-        script(type="module" src="/js/index.js")
+    script(type="module" src="/js/index.js")
+   

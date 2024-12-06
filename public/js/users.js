@@ -1,8 +1,6 @@
-import socket from "./chat.js";
+import { socket } from "./chat.js";
 
-const userList = document.querySelector("#user-list");
-
-if (userList) {
+export function userList(element) {
 	socket.on("roomUsers", (users) => {
 		document.querySelectorAll("#user-card").forEach((i) =>
 			i.remove()
@@ -14,7 +12,7 @@ if (userList) {
                 <img class="user-list__card-img" src="../img/person-circle.svg" , alt=""></img>
                 <span class="user-list__name">${i.userName}</span>
             </div>`;
-			userList.insertAdjacentHTML("beforeend", html);
+			element.insertAdjacentHTML("beforeend", html);
 		});
 	});
 }

@@ -1,39 +1,24 @@
-import toast from "./toast.js";
+import { chat } from "./chat.js";
+import { joinForm } from "./JoinChat.js";
+import { menuHamburguer } from "./mobile.js";
+import { userList } from "./users.js";
 
-const joinForm = document.querySelector("#join-form");
-const containerToast = document.querySelector(".container-toast");
+const joinFormElement = document.querySelector("#join-form");
+const menuHamburguerElement = document.querySelector("#hambuguer-menu");
+const userListElement = document.querySelector("#user-list");
 
-if (joinForm) {
-	joinForm.addEventListener("submit", async (e) => {
-		e.preventDefault();
-		const userName = document.querySelector("#inputName").value;
-		const room = document.querySelector("#inputRoom").value;
+if (joinFormElement) {
+	joinForm(joinFormElement);
+}
 
-		try {
-			const response = await fetch("/chat", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					userName,
-					room,
-				}),
-			});
+if (menuHamburguerElement) {
+	menuHamburguer(menuHamburguerElement);
+}
 
-			localStorage.setItem(
-				"userData",
-				JSON.stringify({ userName, room })
-			);
+if (userListElement) {
+	userList(userListElement);
+}
 
-			if (response.redirected) {
-				window.location.href = response.url;
-			} else {
-				const data = await response.json();
-				toast(containerToast, data.message, "Erro");
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	});
+if (window.location.href.includes("chat")){
+	chat()
 }
