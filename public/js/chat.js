@@ -51,10 +51,13 @@ export function chat() {
 	formMsg.addEventListener("submit", function (e) {
 		e.preventDefault();
 
+		if(inputMessage.value == "") return
+
 		socket.emit("chatMessage", {
 			userData,
 			msgToBeSend: inputMessage.value,
 		});
+	
 		inputMessage.value = "";
 	});
 
@@ -62,13 +65,25 @@ export function chat() {
 	inputMessage.addEventListener("keydown", function (e) {
 		if (e.key === "Enter" && !e.shiftKey) {
 			e.preventDefault();
+
+			if(inputMessage.value == "") return
+
 			socket.emit("chatMessage", {
 				userData,
 				msgToBeSend: inputMessage.value,
 			});
+	
 			inputMessage.value = "";
 		}
 	});
+
+	//Scroll
+	const observer = new MutationObserver(() => {
+		const lastMessage = usersMsg.lastElementChild;
+		if(lastMessage) lastMessage.scrollIntoView({ behavior: 'smooth' });
+	})
+	observer.observe(usersMsg, { childList: true });
+
 	//message é referente ao io.emit("message", msg) from server.js
 	socket.on("message", (data) => {
 		const message = data.msgToBeSend.replace("\n", "<br>");

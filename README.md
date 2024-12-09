@@ -12,6 +12,8 @@ Due to limitations of free hosting services, it was necessary to separate the so
 
 The socket server was deployed on the Render platform, and the application was deployed on Vercel.
 
+Please, click <a href="https://chat-kappa-one-60.vercel.app/" target="_blank" rel="noopener noreferrer">here</a> to access the application.
+
 ## :dart: Goals
 My goal was to deepen my knowledge of Node.js and learn how Socket.io works.
 

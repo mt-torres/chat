@@ -608,12 +608,13 @@ label {
     overflow-y: auto;
     background: url(../img/fundo-chat.png);
     background-size: contain;
+    padding-bottom: .5rem;
 }
 
 
 .display-message__container {
     margin-left: 1rem;
-    margin-top: 1rem;
+    margin-top: .5rem;
     display: flex;
 }
 
