@@ -18,6 +18,9 @@ export function chat() {
 	const loadText = document.querySelector(".connection-alert__text");
 	const containerToast = document.querySelector(".container-toast");
 	
+	//desativando as mensagens durante a conexão com o servidor 
+	document.querySelectorAll("form>*").forEach(i => i.disabled = true)
+
 	const params = new URLSearchParams(window.location.search);
 	const username = params.get("username");
 	
@@ -28,6 +31,8 @@ export function chat() {
 		loadFlip.classList.toggle("connection-alert__connected--show");
 		loadText.innerHTML = "";
 		loadText.innerHTML = "Conectado com sucesso!";
+		//ativando o formulario
+		document.querySelectorAll("form>*").forEach(i => i.disabled = false)
 
 		//remover o modal
 		document.querySelector(".connection-alert").classList.add(

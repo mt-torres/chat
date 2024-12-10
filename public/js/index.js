@@ -6,6 +6,7 @@ import { userList } from "./users.js";
 const joinFormElement = document.querySelector("#join-form");
 const menuHamburguerElement = document.querySelector("#hambuguer-menu");
 const userListElement = document.querySelector("#user-list");
+const usersMsg = document.querySelector("#users-msg");
 
 if (joinFormElement) {
 	joinForm(joinFormElement);
@@ -19,6 +20,6 @@ if (userListElement) {
 	userList(userListElement);
 }
 
-if (window.location.href.includes("chat")){
+if (usersMsg){
 	chat()
 }
