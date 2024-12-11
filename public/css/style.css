@@ -346,6 +346,7 @@ label {
 }
 
 .chat-users {
+  min-width: 232px;
   box-sizing: border-box;
   background-color: #343a40;
   color: white;
@@ -487,11 +488,13 @@ label {
 }
 
 .display-message__message {
-  padding: 0 0.8rem;
+  padding: 0.5rem 0.8rem;
   display: flex;
   flex-direction: column;
   background-color: #7E6AFC;
-  border-radius: 0px 52px 52px 52px;
+  border-radius: 0px 34px 34px 34px;
+  max-width: 70%;
+  word-wrap: break-word;
 }
 @media (prefers-reduced-motion: no-preference) {
   .display-message__message {
@@ -501,7 +504,7 @@ label {
 }
 
 .display-message__message--sender {
-  border-radius: 52px 0px 52px 52px;
+  border-radius: 34px 0px 34px 34px;
 }
 @media (prefers-reduced-motion: no-preference) {
   .display-message__message--sender {
@@ -527,6 +530,10 @@ label {
   justify-content: end;
   margin-top: 0.2rem;
   font-size: 0.7rem;
+}
+
+.display-message__message-info--receiver {
+  justify-content: flex-start;
 }
 
 .display-message__user-name {
@@ -586,7 +593,7 @@ label {
     height: 50%;
     width: 180px;
     border-radius: 20px;
-    right: -210px;
+    right: -500px;
     transition: right 0.5s ease;
     margin-top: 3.5rem;
     box-shadow: 1px 6px 65px -8px rgba(0, 0, 0, 0.75);
@@ -766,6 +773,7 @@ label {
   }
   to {
     opacity: 0;
+    z-index: 0;
   }
 }
 

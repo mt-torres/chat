@@ -20,11 +20,6 @@ export function joinForm(element) {
                 }),
             });
 
-            localStorage.setItem(
-                "userData",
-                JSON.stringify({ userName, room })
-            );
-
             if (response.redirected) {
                 window.location.href = response.url;
             } else {

@@ -4,7 +4,7 @@ export function menuHamburguer(el) {
 		document.querySelector(".chat-users").classList.toggle(
 			"chat-messages__hambuguer--fadein"
 		);
-		menuHamburguer.classList.toggle(
+		el.classList.toggle(
 			"chat-messages__hambuguer-menu--click"
 		);
 	});

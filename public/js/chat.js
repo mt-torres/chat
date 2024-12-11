@@ -1,8 +1,8 @@
-// const socket = io("http://localhost:4000/", {
+import toast from "./toast.js";
+
+// export const socket = io("http://localhost:4000/", {
 // 	transports: ["websocket", "polling"],
 // });
-
-import toast from "./toast.js";
 
 export const socket = io("https://chat-websocket-server-5vlc.onrender.com/", {
 	transports: ["websocket", "polling"],
@@ -23,11 +23,13 @@ export function chat() {
 
 	const params = new URLSearchParams(window.location.search);
 	const username = params.get("username");
-	
-	const userData = JSON.parse(localStorage.getItem("userData"));
+	const room = params.get("room");
+
+	const userData = {username, room }
+
+
 	//verificando se o server está on
 	socket.on("connect", () => {
-		console.log("Conectado ao servidor WebSocket");
 		loadFlip.classList.toggle("connection-alert__connected--show");
 		loadText.innerHTML = "";
 		loadText.innerHTML = "Conectado com sucesso!";
@@ -40,6 +42,7 @@ export function chat() {
 		);
 	});
 
+	//envia os dados do usuario para o socket server
 	socket.emit("joinRoom", userData);
 
 	//mostrar mensagens de quem entra na sala
@@ -82,7 +85,7 @@ export function chat() {
 		}
 	});
 
-	//Scroll
+	//Scroll automatico mensagens
 	const observer = new MutationObserver(() => {
 		const lastMessage = usersMsg.lastElementChild;
 		if(lastMessage) lastMessage.scrollIntoView({ behavior: 'smooth' });
@@ -91,20 +94,22 @@ export function chat() {
 
 	//message é referente ao io.emit("message", msg) from server.js
 	socket.on("message", (data) => {
+		const userId = socket.id
 		const message = data.msgToBeSend.replace("\n", "<br>");
 		const html = ` 
 			<div class="display-message__container  ${
-				data.userName == username
+				data.userId == userId
 					? "display-message__container--sender"
 					: ""
 			}">
 				<div class="display-message__message ${
-					data.userName == username
+					data.userId == userId
 						? "display-message__message--sender"
 						: ""
 				}">
-					<div class="display-message__message-info">
-						<span class="display-message__user-name">${data.userName}</small>
+
+					<div class=${data.userId != userId? "display-message__message-info--receiver": "display-message__message-info"}>
+						<span class="display-message__user-name">${data.username}</small>
 						<span class="display-message__user-date"> 11 mins ago</small>
 					</div>
 					<p class="display-message__message-data">
