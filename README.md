@@ -1,4 +1,4 @@
-![Logo do projeto](./public/img/Logo-text2.png)
+![Logo do projeto](./public/img/logo-azul.png)
 ## :pencil:Description
 This application is an instant chat developed using Socket.io and Node.js.
 
@@ -38,6 +38,8 @@ My goal was to deepen my knowledge of Node.js and learn how Socket.io works.
 ## :construction::warning: Under construction
 
 ### features to be implemented:
-- IImplement user search
-- Check alert functionality
-- Add sound effects
+- Implement authentication and authorization.
+- Implement the option to create public and private rooms.
+- Implement user search and create a private chat between two users.
+- Implement the functionality to save conversations.
+- Add sound effects.
